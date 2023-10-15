@@ -1,0 +1,53 @@
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary: #ffb300;
+    --primary-hover: #ffc107;
+    --primary-focus: rgba(255, 179, 0, 0.25);
+    --primary-inverse: rgba(0, 0, 0, 0.75);
+  }
+}
+
+nav {
+  padding: 0 5px;
+}
+
+h4 {
+  margin-bottom: 0px;
+}
+
+summary {
+  display: flex;
+  justify-content: space-between;
+  width: 230px;
+}
+
+details a {
+  margin: 15px 15px 0 15px;
+  padding: 5px 5px;
+  font-size: 16px;
+}
+
+details a:focus {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+td:last-child {
+  width: 150px;
+}
+
+/* input[type="radio"] {
+  font-size: 10px;
+} */
+
+#nav-top {
+  border-bottom: 0.5px solid #ffb300;
+  margin-bottom: 30px;
+}
+
+#scroll-top {
+  margin-right: 5px;
+}

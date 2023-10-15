@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Scraper</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <hgroup>
+        <h1>Search Results for "{{keyword}}" :</h1>
+        {% if site == "all" %} 
+        <p>Reference: remoteok.com & weworkremotely.com</p>
+        {% elif site == "ro" %} 
+        <p>Reference: remoteok.com</p>
+        {% elif site == "wwr" %} 
+        <p>Reference: weworkremotely.com</p>
+        {% endif %}
+        </p>
+      </hgroup>
+      <nav id="nav-top">
+        <ul>
+          <li>
+            <a href="/">
+              <i class="fa-solid fa-house" style="color: #ffffff"></i>
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li>Total: {{jobs|length}}</li>
+          <li>
+            <a href="/refresh?site={{site}}&keyword={{keyword}}"
+              ><i class="fa-solid fa-rotate-right" style="color: #ffffff"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/export?site={{site}}&keyword={{keyword}}"
+              ><i class="fa-solid fa-file-arrow-down" style="color: #ffffff"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+
+      <figure>
+        <table role="grid">
+          <thead>
+            <th>Position</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Link</th>
+          </thead>
+          <tbody>
+            {% for job in jobs %}
+            <tr>
+              <td>{{job.position}}</td>
+              <td>{{job.company}}</td>
+              <td>{{job.location}}</td>
+              <td>
+                <a
+                  href="{{job.link.replace('rc/clk','viewjob')}}"
+                  target="_blank"
+                  >Apply now &rarr;</a
+                >
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </figure>
+      <nav>
+        <ul></ul>
+        <ul>
+          <li>
+            <a
+              id="scroll-top"
+              style="cursor: pointer"
+              onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+              ><i class="fa-solid fa-arrow-up" style="color: #ffffff"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+    </main>
+    <script
+      src="https://kit.fontawesome.com/dd4f72c831.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

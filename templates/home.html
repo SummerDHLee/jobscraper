@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Scraper</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Job Scraper</h1>
+      <form action="/search">
+        <nav>
+          <ul>
+            <li><h4>What job do you want?</h4></li>
+          </ul>
+          <ul>
+            <li>
+              <details role="list">
+                <summary aria-haspopup="listbox">Select site to scrape</summary>
+                <ul role="listbox">
+                  <li>
+                    <label for="all">
+                      <input
+                        type="radio"
+                        id="all"
+                        name="site"
+                        value="all"
+                        checked
+                      />
+                      all
+                    </label>
+                  </li>
+                  <li>
+                    <label for="remoteok">
+                      <input
+                        type="radio"
+                        id="remoteok"
+                        name="site"
+                        value="ro"
+                      />
+                      remoteok
+                    </label>
+                  </li>
+                  <li>
+                    <label for="weworkremotely">
+                      <input
+                        type="radio"
+                        id="weworkremotely"
+                        name="site"
+                        value="wwr"
+                      />
+                      weworkremotely
+                    </label>
+                  </li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </nav>
+        <input type="text" name="keyword" placeholder="Write keyword" />
+        <button>Search</button>
+      </form>
+      <p>
+        This website scrapes jobs from
+        <a href="https://remoteok.com" target="_blank">remoteok</a> and
+        <a href="https://weworkremotely.com" target="_blank">weworkremotely</a>.
+      </p>
+    </main>
+    <script
+      type="text/javascript"
+      src="{{url_for('static',filename='home.js')}}"
+    ></script>
+  </body>
+</html>
