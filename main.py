@@ -15,7 +15,6 @@ def home():
 
 @app.route("/search")
 def search():
-    print("searching", request.args)
     keyword = request.args.get("keyword")
     site = request.args.get("site")
 
@@ -42,7 +41,6 @@ def search():
 
 @app.route("/refresh")
 def refresh():
-    print("refreshing", request.args)
     keyword = request.args.get("keyword")
     site = request.args.get("site")
     print(site)
@@ -52,7 +50,6 @@ def refresh():
 
 @app.route("/export")
 def export():
-    print("exporting", request.args)
     keyword = request.args.get("keyword")
     site = request.args.get("site")
 
